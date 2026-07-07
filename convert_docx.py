@@ -1,7 +1,7 @@
 from docx import Document
 import os
 
-path = r"C:\Users\aksha\OneDrive\Desktop\Warehouse_Management_Help_2021.docx"
+path = r""
 
 print("Checking file exists:", os.path.exists(path))
 
