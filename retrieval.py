@@ -18,8 +18,6 @@ def retrieve_with_rerank(query: str, top_k: int = 10, min_score: float = 0.3):
 
     D, I = index.search(q_emb, top_k)
 
-    # Convert distances to similarities (FAISS uses L2 by default)
-    # Lower distance = more similar
     distances = D[0]
     candidates = [chunks[i] for i in I[0]]
 
@@ -29,7 +27,6 @@ def retrieve_with_rerank(query: str, top_k: int = 10, min_score: float = 0.3):
     # Filter out very bad matches
     filtered = [(c, d) for c, d in pairs if d < min_score]
 
-    # If nothing relevant, return empty
     if len(filtered) == 0:
         return []
 
